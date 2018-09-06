@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/rule/rule",
+    "pages/rank/rank",
+    "pages/playDice/playDice"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#b11e23",
+    "navigationBarTitleText": "闽南中秋博饼",
+    "navigationBarTextStyle": "#fff"
+  }
+}

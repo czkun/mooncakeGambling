@@ -1,0 +1,30 @@
+<!--rank.wxml-->
+<view class="container">
+    <image src="{{bgImg}}" mode="scaleToFill" style="height: 100%;" class="bg"></image>
+    <view class="rank-img">
+        <image src="../../imgs/rank.png" mode="widthFix"></image>
+    </view>
+    <view class="rank-title" wx:if="{{!selfRank}}">您当前暂未进入排名</view>
+    <view class="rank-title" wx:if="{{selfRank}}">您当前排名第{{selfRank}}名</view>
+    <view class="rank-box">
+        <view class="weui-flex rank-box-tt">
+            <view class="w70">排名</view>
+            <view class="weui-flex__item">头像</view>
+            <view>积分</view>
+        </view>
+        <scroll-view scroll-y style="height: 828rpx;">
+            <view class="rank-list">
+                <block wx:for="{{list}}" wx:key="*this">
+                    <view class="weui-flex rank-list-item">
+                        <view class="w70">{{index+1}}.</view>
+                        <view class="weui-flex__item">
+                            <image src="{{item.user.avatar}}" mode="scaleToFill" class="tx"></image>
+                            {{item.user.nickname}}
+                        </view>
+                        <view>{{item.total}}</view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+</view>

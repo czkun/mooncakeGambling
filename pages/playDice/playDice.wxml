@@ -1,0 +1,55 @@
+<!--pages/playDice/playDice.wxml-->
+<view class="container">
+    <image src="{{bgImg}}" mode="scaleToFill" style="height: 100%;" class="bg"></image>
+    <view class="playDice-title">您今天还有<text>{{count}}</text>次机会</view>
+    <view class="playDice-bowl">
+        <image src="../../imgs/bowl.png" mode="widthFix"></image>
+        <view class="dice-box" hidden="{{playStatus != 1}}">
+            <image  src="{{dices[0]}}" class="dices"  mode="widthFix"></image>
+        </view>
+        <view class="dice-list" hidden="{{playStatus == 1}}">
+            <block wx:for="{{diceList}}" wx:key="*this">
+                <image  src="{{item}}" class="dice {{'dice' + (index+1)}}"  mode="widthFix"></image>
+            </block>
+        </view>
+    </view>
+    <view class="playDice-btns">
+        <view><button class="btn" bindtap="_play">摇一摇</button></view>
+        <view><button class="btn" open-type="share">马上分享</button></view>
+        <view><navigator class="btn" open-type="navigateBack">返回首页</navigator></view>
+    </view>
+
+   <view class="mask" hidden="{{playStatus != 2}}" bindtap="_closeResultPopup">
+        <view class="result" catchtap="return false">
+            <image src="../../imgs/popup.png" mode="widthFix" class="result-bg"></image>
+            <view class="result-box">
+                <view class="result-box-tt">
+                    <view wx:if="{{result.result.score}}">恭喜你</view>
+                    <view wx:else>很遗憾</view>
+                    <text class="close" bindtap="_closeResultPopup">×</text>
+                </view>
+
+                <view class="result-box-ct1">{{result.result.name}}</view>
+                <view class="result-box-imgs">
+                    <block wx:for="{{diceList}}" wx:key="*this">
+                        <image src="{{item}}" mode="widthFix"></image>
+                    </block>
+                </view>
+                <view class="result-box-ct2">+{{result.result.score}}积分</view>
+                <view class="result-box-ct3">特别赞助:</view>
+                <view class="result-box-logo"><image src="{{result.logo ? result.logo:'../../imgs/logo.png'}}" mode="widthFix"></image></view>
+            </view>
+        </view>
+    </view>
+
+    <view class="mask" hidden="{{finishHide}}" bindtap="_closeFinishPopup">
+        <view class="finish" catchtap="return false">
+            <view class="finish-tt">您的博饼次数已用完 <i class="close" bindtap="_closeFinishPopup">×</i></view>
+            <view class="finish-box">
+                <view class="finish-box-ct1">分享可增加1次</view>
+                <button class="finish-box-btn" open-type="share">马上分享</button>
+                <view class="finish-box-ct2">今日还可获得次数:{{share}}</view>
+            </view>
+        </view>
+    </view>
+</view>

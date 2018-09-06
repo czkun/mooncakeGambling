@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container">
+    <image src="{{bgImg}}" mode="widthFix" class="bg"></image>
+    <image src="../../imgs/music.png" animation="{{musicAnimation}}" mode="widthFix" class="music {{musicPlay ? 'rotate' : ''}}" bindtap="_musicPlayChange"></image>
+
+    <!--自定义-->
+    <view class="index-bowl">
+        <navigator url="../playDice/playDice"></navigator>
+    </view>
+    <!--自定义 /-->
+
+    <view class="index-btns weui-flex" hidden="{{scopeUserInfo}}">
+        <view class="weui-flex__item"><navigator class="btn" url="../playDice/playDice">博状元</navigator></view>
+        <view class="weui-flex__item"><navigator class="btn" url="../rule/rule">游戏规则</navigator></view>
+        <view class="weui-flex__item"><navigator class="btn" url="../rank/rank">排行榜</navigator></view>
+    </view>
+    <view class="index-btns weui-flex"  hidden="{{!scopeUserInfo}}">
+        <view class="weui-flex__item" style="padding: 0 100rpx"><button class="btn" open-type="getUserInfo" bindgetuserinfo="_updateInfo">授权登录</button></view>
+    </view>
+
+    <view class="mask" hidden="{{isBindMobile}}">
+        <view class="bindMobile-box">
+            <view class="bindMobile-box-tt">绑定手机号</view>
+            <view class="bindMobile-box-form">
+                <view class="weui-flex"><input type="text" data-name="mobile" bindinput="_mobileInput" placeholder="请输入您的手机号码" class="weui-flex__item"/></view>
+                <view class="weui-flex"><input type="text" data-name="code" bindinput="_input" placeholder="请输入验证码" class="weui-flex__item"/><text bindtap="_getCode" class="{{!codeState ? 'gray':''}}">{{codeText}}</text></view>
+                <button  class="bindMobile-box-form-btn" bindtap="_bindMobile">绑定手机号</button>
+            </view>
+        </view>
+    </view>
+</view>
+

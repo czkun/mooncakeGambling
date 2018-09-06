@@ -1,0 +1,51 @@
+/* pages/rank/rank.wxss */
+.rank-img{
+    width: 199rpx;
+    margin: 60rpx auto 0;
+}
+.rank-img image{
+    width: 100%;
+}
+.rank-title{
+    margin-top: 10rpx;
+    font-size: 28rpx;
+    color: #f9ca5a;
+    text-align: center;
+}
+.rank-box{
+    margin: 30rpx 78rpx 0;
+    background-color: #fff;
+}
+.rank-box-tt{
+    height: 52rpx;
+    line-height: 52rpx;
+    background-color: #f9ca5a;
+    color: #fff;
+    font-size: 28rpx;
+    padding:0 38rpx;
+}
+.rank-list{
+    padding:0 38rpx;
+}
+.rank-list-item{
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 24rpx;
+    color: #393737;
+    border-top: #eaeaea 2rpx solid;
+}
+.rank-list-item:first-child{
+    border-top: none;
+}
+.rank-list-item .tx{
+    width: 48rpx;
+    height: 48rpx;
+    vertical-align: middle;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
+}
+.w70{
+    width: 70rpx;
+    text-align: center;
+    margin-right: 20rpx;
+}

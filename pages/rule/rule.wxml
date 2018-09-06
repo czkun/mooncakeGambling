@@ -1,0 +1,5 @@
+<!--pages/rule/rule.wxml-->
+<view class="container">
+    <image src="{{bgImg}}" mode="widthFix" class="bg"></image>
+</view>
+
