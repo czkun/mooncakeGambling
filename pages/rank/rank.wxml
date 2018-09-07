@@ -4,24 +4,28 @@
     <view class="rank-img">
         <image src="../../imgs/rank.png" mode="widthFix"></image>
     </view>
-    <view class="rank-title" wx:if="{{!selfRank}}">您当前暂未进入排名</view>
-    <view class="rank-title" wx:if="{{selfRank}}">您当前排名第{{selfRank}}名</view>
+    <view class="rank-title" wx:if="{{!rank.rank}}">您今日积分为{{rank.score}}分,暂未进入排名</view>
+    <view class="rank-title" wx:if="{{rank.rank}}">您今日积分为{{rank.score}}分,排名第{{rank.rank}}名</view>
+    <view class="rank-snav weui-flex">
+        <view class="weui-flex__item {{rankType == 0 ? 'act' : ''}}" data-type="0" bindtap="_rankTypeChange">今日排行</view>
+        <view class="weui-flex__item {{rankType == 1 ? 'act' : ''}}" data-type="1" bindtap="_rankTypeChange">昨日排行</view>
+    </view>
     <view class="rank-box">
         <view class="weui-flex rank-box-tt">
             <view class="w70">排名</view>
             <view class="weui-flex__item">头像</view>
             <view>积分</view>
         </view>
-        <scroll-view scroll-y style="height: 828rpx;">
+        <scroll-view scroll-y style="height: 736rpx;">
             <view class="rank-list">
-                <block wx:for="{{list}}" wx:key="*this">
+                <block wx:for="{{rank.list}}" wx:key="*this">
                     <view class="weui-flex rank-list-item">
                         <view class="w70">{{index+1}}.</view>
                         <view class="weui-flex__item">
                             <image src="{{item.user.avatar}}" mode="scaleToFill" class="tx"></image>
                             {{item.user.nickname}}
                         </view>
-                        <view>{{item.total}}</view>
+                        <view>{{item.score}}</view>
                     </view>
                 </block>
             </view>

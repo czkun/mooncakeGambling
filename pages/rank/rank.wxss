@@ -12,13 +12,32 @@
     color: #f9ca5a;
     text-align: center;
 }
+.rank-snav{
+    margin: 20rpx 80rpx 0;
+    background-color: #fff;
+    text-align: center;
+    font-size: 28rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 60rpx;
+    overflow: hidden;
+}
+.rank-snav .weui-flex__item{
+    color: #f9ca5a;
+}
+.rank-snav .weui-flex__item.act{
+    background-color: #f9ca5a;
+    color: #fff;
+}
 .rank-box{
     margin: 30rpx 78rpx 0;
     background-color: #fff;
+    border-radius: 10rpx;
+    overflow: hidden;
 }
 .rank-box-tt{
-    height: 52rpx;
-    line-height: 52rpx;
+    height: 60rpx;
+    line-height: 60rpx;
     background-color: #f9ca5a;
     color: #fff;
     font-size: 28rpx;
@@ -32,7 +51,7 @@
     line-height: 90rpx;
     font-size: 24rpx;
     color: #393737;
-    border-top: #eaeaea 2rpx solid;
+    border-bottom: #eaeaea 2rpx solid;
 }
 .rank-list-item:first-child{
     border-top: none;

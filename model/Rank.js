@@ -6,10 +6,13 @@ class Rank extends Base{
     super()
   }
 
-  /* 获得可博饼次数 */
-  getRank(callback){
+  /* 获得排行榜 */
+  getRank(type = 0,callback){
     let params = {
       url: '/api/bobing/rank',
+      data: {
+        type: type
+      },
       type: 'post',
       sCallback: (res) => {
         callback && callback(res)

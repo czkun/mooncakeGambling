@@ -4,8 +4,12 @@ const rank = new Rank()
 const app = getApp()
 Page({
   data: {
-    list: null,
-    selfRank: 0,
+    rankType: 0,
+    rank: {
+      rank: '',
+      score: 0,
+      list: []
+    },
     bgImg: null
   },
 
@@ -18,15 +22,22 @@ Page({
   },
 
   _onLoad: function () {
-    rank.getSelfRank((res) => {
+    this._getRank()
+  },
+
+  _getRank: function () {
+    rank.getRank(this.data.rankType,(res) => {
       this.setData({
-        selfRank: res.data.rank
-      })
-      rank.getRank((res) => {
-        this.setData({
-          list: res.data.list
-        })
+        rank: res.data
       })
     })
+  },
+
+  _rankTypeChange(e){
+    let type = rank.getDataSet(e,'type')
+    this.setData({
+      rankType: type
+    })
+    this._getRank()
   }
 })

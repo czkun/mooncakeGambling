@@ -2,7 +2,7 @@
 <view class="container">
     <image src="{{bgImg}}" mode="scaleToFill" style="height: 100%;" class="bg"></image>
     <view class="playDice-title">您今天还有<text>{{count}}</text>次机会</view>
-    <view class="playDice-bowl">
+    <view class="playDice-bowl" bindtap="_play">
         <image src="../../imgs/bowl.png" mode="widthFix"></image>
         <view class="dice-box" hidden="{{playStatus != 1}}">
             <image  src="{{dices[0]}}" class="dices"  mode="widthFix"></image>
