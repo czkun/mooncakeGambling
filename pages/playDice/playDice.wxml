@@ -19,8 +19,8 @@
         <view><navigator class="btn" open-type="navigateBack">返回首页</navigator></view>
     </view>
 
-   <view class="mask" hidden="{{playStatus != 2}}" bindtap="_closeResultPopup">
-        <view class="result" catchtap="return false">
+   <view class="mask" hidden="{{playStatus != 2}}">
+        <view class="result">
             <image src="../../imgs/popup.png" mode="widthFix" class="result-bg"></image>
             <view class="result-box">
                 <view class="result-box-tt">
