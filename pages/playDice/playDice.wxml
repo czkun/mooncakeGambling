@@ -8,7 +8,7 @@
             <image  src="{{dices[0]}}" class="dices"  mode="widthFix"></image>
         </view>
         <view class="dice-list" hidden="{{playStatus == 1}}">
-            <block wx:for="{{diceList}}" wx:key="*this">
+            <block wx:for="{{diceList}}" wx:key="{{index}}">
                 <image  src="{{item}}" class="dice {{'dice' + (index+1)}}"  mode="widthFix"></image>
             </block>
         </view>
@@ -31,7 +31,7 @@
 
                 <view class="result-box-ct1">{{result.result.name}}</view>
                 <view class="result-box-imgs">
-                    <block wx:for="{{diceList}}" wx:key="*this">
+                    <block wx:for="{{diceList}}" wx:key="{{index}}">
                         <image src="{{item}}" mode="widthFix"></image>
                     </block>
                 </view>
