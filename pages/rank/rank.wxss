@@ -32,7 +32,7 @@
 .rank-box{
     margin: 30rpx 78rpx 0;
     background-color: #fff;
-    border-radius: 10rpx;
+    border-radius: 10rpx 10rpx 0 0;
     overflow: hidden;
 }
 .rank-box-tt{
@@ -67,4 +67,34 @@
     width: 70rpx;
     text-align: center;
     margin-right: 20rpx;
+}
+
+.rank-swiper{
+    border-top: #eaeaea 2rpx solid;
+    margin: 0 78rpx;
+    padding: 30rpx 0;
+    background-color: #fff;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-radius: 0 0 10rpx 10rpx;
+    text-align: center;
+}
+.rank-swiper-item{
+    padding: 0 40rpx;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.rank-logo{
+    width: 100%;
+    height: 50%;
+    vertical-align: bottom;
+}
+
+.rank-swiper-item.act{
+    padding: 0;
+}
+.rank-swiper-item.act .rank-logo{
+    height: 100%;
+    transition: height 1s;
 }

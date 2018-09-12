@@ -4,19 +4,28 @@
     <view class="rank-img">
         <image src="../../imgs/rank.png" mode="widthFix"></image>
     </view>
-    <view class="rank-title" wx:if="{{!rank.rank}}">您今日积分为{{rank.score}}分,暂未进入排名</view>
-    <view class="rank-title" wx:if="{{rank.rank}}">您今日积分为{{rank.score}}分,排名第{{rank.rank}}名</view>
+
+    <view hidden="{{rankType != 0}}">
+        <view class="rank-title" wx:if="{{!rank.rank}}">您今日积分为{{rank.score}}分,暂未进入排名</view>
+        <view class="rank-title" wx:if="{{rank.rank}}">您今日积分为{{rank.score}}分,排名第{{rank.rank}}名</view>
+    </view>
+    <view hidden="{{rankType != 1}}">
+        <view class="rank-title" wx:if="{{!rank.rank}}">您昨日积分为{{rank.score}}分,暂未进入排名</view>
+        <view class="rank-title" wx:if="{{rank.rank}}">您昨日积分为{{rank.score}}分,排名第{{rank.rank}}名</view>
+    </view>
+
     <view class="rank-snav weui-flex">
         <view class="weui-flex__item {{rankType == 0 ? 'act' : ''}}" data-type="0" bindtap="_rankTypeChange">今日排行</view>
         <view class="weui-flex__item {{rankType == 1 ? 'act' : ''}}" data-type="1" bindtap="_rankTypeChange">昨日排行</view>
     </view>
+
     <view class="rank-box">
         <view class="weui-flex rank-box-tt">
             <view class="w70">排名</view>
             <view class="weui-flex__item">头像</view>
             <view>积分</view>
         </view>
-        <scroll-view scroll-y style="height: 736rpx;">
+        <scroll-view scroll-y style="height: 550rpx;">
             <view class="rank-list">
                 <block wx:for="{{rank.list}}" wx:key="{{index}}">
                     <view class="weui-flex rank-list-item">
@@ -31,4 +40,12 @@
             </view>
         </scroll-view>
     </view>
+
+    <swiper autoplay circular interval="3000" duration="1000" display-multiple-items="3" class="rank-swiper" bindchange="_swiperChange">
+        <block wx:for="{{logoList}}" wx:key="{{index}}">
+            <swiper-item class="rank-swiper-item {{index == swiperIndex ? 'act' : ''}}">
+                <image src="{{item}}"  mode="aspectFit" class="rank-logo"/>
+            </swiper-item>
+        </block>
+    </swiper>
 </view>

@@ -10,8 +10,6 @@ const user = new User()
 import File from '../../model/File.js'
 const file = new File()
 
-import validate from '../../utils/validate.js'
-
 const app = getApp()
 Page({
   data: {
@@ -175,16 +173,15 @@ Page({
   _getCode(){
     if (this.data.codeState){
       let mobile = this.data.mobile
-      if (validate.mobile(mobile)) {
-        bindMobile.getSmsCode(mobile, (res) => {
-          wx.showToast({
-            title: res.message,
-            icon: 'none',
-            duration: 3000
-          })
-          this._countdown()
+
+      bindMobile.getSmsCode(mobile, (res) => {
+        wx.showToast({
+          title: res.message,
+          icon: 'none',
+          duration: 3000
         })
-      }
+        this._countdown()
+      })
     }
   },
 

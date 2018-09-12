@@ -1,7 +1,7 @@
 export default{
 
   mobile(val){
-    var reg = /^1[34578]{1}\d{9}$/
+    var reg = /^1[345789]{1}\d{9}$/
     if(!reg.test(val)){
       wx.showToast({
         title: '手机号有误',
