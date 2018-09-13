@@ -6,7 +6,7 @@ class User extends Base{
     super()
   }
 
-  /* 获得可博饼次数 */
+  /* 更新用户信息 */
   updateInfo(nickname,avatar,callback){
     let params = {
       url: '/api/account/updateInfo',
