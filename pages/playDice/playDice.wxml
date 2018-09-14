@@ -46,7 +46,7 @@
         <view class="finish" catchtap="return false">
             <view class="finish-tt">您的博饼次数已用完 <i class="close" bindtap="_closeFinishPopup">×</i></view>
             <view class="finish-box">
-                <view class="finish-box-ct1">分享可增加1次</view>
+                <view class="finish-box-ct1">每1位好友点击增加1次</view>
                 <button class="finish-box-btn" open-type="share">马上分享</button>
                 <view class="finish-box-ct2">今日还可获得次数:{{share}}</view>
             </view>

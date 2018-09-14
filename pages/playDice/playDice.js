@@ -50,21 +50,12 @@ Page({
 
   // 分享
   onShareAppMessage: function (res) {
-    let that = this
+    let code = wx.getStorageSync('shareCode')
     return {
       title: '中秋博饼',
-      path: '/pages/index/index',
+      path: '/pages/index/index?code=' + code,
       imageUrl: app.globalData.file.index_img,
       success: function () {
-        playDice.share((res) => {
-          if(res.status == 20000){
-            that.setData({
-              count: that.data.count+1,
-              share: that.data.share-1,
-              finishHide: true,
-            })
-          }
-        })
       }
     }
   },
@@ -86,12 +77,6 @@ Page({
         count: res.data.dice
       })
     })
-
-    playDice.getShare((res) => {
-      this.setData({
-        share: res.data.share
-      })
-    })
   },
 
   // 摇一摇
@@ -111,6 +96,13 @@ Page({
     }
 
     if(!this.data.count){
+
+      // 获取可分享次数
+      playDice.getShare((res) => {
+        this.setData({
+          share: res.data.share
+        })
+      })
       this.setData({
         finishHide: false
       })

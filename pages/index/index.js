@@ -16,6 +16,7 @@ Page({
     /* 数据 */
     mobile: null,
     code: null,
+    shareCode: null,
 
     /* 控制 */
 
@@ -40,19 +41,24 @@ Page({
 
   // 分享
   onShareAppMessage: function (res) {
+    let code = wx.getStorageSync('shareCode')
+    console.log(code)
     return {
       title: '中秋博饼',
-      path: '/pages/index/index',
+      path: '/pages/index/index?code=' + code,
       imageUrl: app.globalData.file.index_img,
-      success: function () {
-        playDice.share()
-      }
+      success: function () {}
     }
   },
 
-  onLoad: function () {
+  onLoad: function (res) {
+    this.setData({
+      shareCode: res.code
+    })
+
     this._getFile()
     this._onLoad()
+    console.log('shareCode',this.data.shareCode)
   },
 
   _onLoad: function () {
@@ -65,11 +71,11 @@ Page({
             isBindMobile: false
           })
         }else{
-          this._updateInfo()
+          this._initUser()
         }
       })
     }else{
-      this._updateInfo()
+      this._initUser()
     }
 
     // 判断有没有绑定手机号
@@ -130,6 +136,12 @@ Page({
     }
   },
 
+  _initUser: function(){
+    this._updateInfo()
+    this._getShareCode()
+    this._shareClick()
+  },
+
   /* 更新用户信息 */
   _updateInfo: function(){
     // 查看是否授权
@@ -138,7 +150,6 @@ Page({
       success: function(res){
         console.log(res);
         if (res.authSetting['scope.userInfo']) {
-          
           wx.getUserInfo({
             success: function(res) {
               // 已经授权，可以直接调用 getUserInfo 获取头像昵称
@@ -157,11 +168,25 @@ Page({
     })
   },
 
+  // 获取用户分享的code
+  _getShareCode: function(){
+    user.shareCode((res) => {
+      wx.setStorageSync('shareCode', res.data.code)
+    })
+  },
+
+  // 点击他人分享的链接
+  _shareClick: function(){
+    let shareCode = this.data.shareCode
+    console.log('shareCode2',shareCode)
+    if(shareCode){
+      user.shareClick(shareCode,(res) => {
+        console.log(res)
+      })
+    }
+  },
+
   _mobileInput(e){
-    /*this.setData({
-      codeState: true,
-      codeText: '获取验证码',
-    })*/
     this._input(e)
   },
 
@@ -220,7 +245,7 @@ Page({
         this.setData({
           isBindMobile: true
         })
-        this._updateInfo();
+        this._initUser();
       }
     })
   }

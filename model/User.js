@@ -21,6 +21,33 @@ class User extends Base{
     }
     this.request(params)
   }
+
+  /* 获得分享的code */
+  shareCode(callback){
+    let params = {
+      url: '/api/bobing/shareCode',
+      type: 'post',
+      sCallback: (res) => {
+        callback && callback(res)
+      }
+    }
+    this.request(params)
+  }
+
+  /* 点击他人分享的链接 */
+  shareClick(code,callback){
+    let params = {
+      url: '/api/bobing/shareClick',
+      type: 'post',
+      data: {
+        code: code,
+      },
+      sCallback: (res) => {
+        callback && callback(res)
+      }
+    }
+    this.request(params)
+  }
 }
 
 export default User
