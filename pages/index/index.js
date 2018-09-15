@@ -52,13 +52,14 @@ Page({
   },
 
   onLoad: function (res) {
-    this.setData({
-      shareCode: res.code
-    })
+    if(res.code){
+      this.setData({
+        shareCode: res.code
+      })
+    }
 
     this._getFile()
     this._onLoad()
-    console.log('shareCode',this.data.shareCode)
   },
 
   _onLoad: function () {
@@ -170,9 +171,11 @@ Page({
 
   // 获取用户分享的code
   _getShareCode: function(){
-    user.shareCode((res) => {
-      wx.setStorageSync('shareCode', res.data.code)
-    })
+    if(!wx.getStorageSync('shareCode')) {
+      user.shareCode((res) => {
+        wx.setStorageSync('shareCode', res.data.code)
+      })
+    }
   },
 
   // 点击他人分享的链接
