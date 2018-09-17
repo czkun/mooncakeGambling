@@ -48,6 +48,21 @@ class User extends Base{
     }
     this.request(params)
   }
+
+  /* 点击广告获得次数 */
+  adClick(id,callback){
+    let params = {
+      url: '/api/bobing/adClick',
+      type: 'post',
+      data: {
+        id: id,
+      },
+      sCallback: (res) => {
+        callback && callback(res)
+      }
+    }
+    this.request(params)
+  }
 }
 
 export default User

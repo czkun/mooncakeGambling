@@ -42,9 +42,9 @@
     </view>
 
     <swiper autoplay circular interval="3000" duration="1000" display-multiple-items="3" class="rank-swiper" bindchange="_swiperChange">
-        <block wx:for="{{logoList}}" wx:key="{{index}}">
+        <block wx:for="{{businessList}}" wx:key="{{index}}">
             <swiper-item class="rank-swiper-item {{index == swiperIndex ? 'act' : ''}}">
-                <image src="{{item}}"  mode="aspectFit" class="rank-logo"/>
+                <image src="{{item.logo}}"  mode="aspectFit" class="rank-logo"/>
             </swiper-item>
         </block>
     </swiper>

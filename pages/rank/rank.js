@@ -11,7 +11,7 @@ Page({
       list: []
     },
     bgImg: null,
-    logoList: [],
+    businessList: [],
     swiperIndex: 1,
   },
 
@@ -20,7 +20,7 @@ Page({
 
     this.setData({
       bgImg: app.globalData.file.base_img,
-      logoList: app.globalData.file.logo_list
+      businessList: app.globalData.file.business_list
     })
   },
 

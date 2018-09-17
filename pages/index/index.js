@@ -27,6 +27,10 @@ Page({
 
     // 背景图片
     bgImg: null,
+    // logo列表
+    businessList: [],
+    // 首页背景色
+    backgroundColor: '#B11E23',
 
     // 授权获取信息
     scopeUserInfo: false,
@@ -99,10 +103,17 @@ Page({
       wx.hideLoading()
 
       this.setData({
-        bgImg: app.globalData.file.index_img
+        bgImg: app.globalData.file.index_img,
+        businessList: app.globalData.file.business_list,
+        backgroundColor: app.globalData.file.background_color,
       })
       this._initMusic();
     })
+  },
+
+  _view: function(str){
+
+    return str2;
   },
 
   // 初始化音乐
@@ -250,6 +261,14 @@ Page({
         })
         this._initUser();
       }
+    })
+  },
+
+  /* 点击广告图 */
+  _adClick(e) {
+    let id = user.getDataSet(e,'id')
+    user.adClick(id,(res) => {
+      console.log(res)
     })
   }
 })

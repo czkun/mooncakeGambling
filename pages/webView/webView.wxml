@@ -1,0 +1,5 @@
+<!--pages/webView/webView.wxml-->
+<view wx:if="{{url}}">
+    <web-view src="{{url}}" bindload="_adClick"></web-view>
+</view>
+

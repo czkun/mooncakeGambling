@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" wx:if="{{bgImg}}">
     <image src="{{bgImg}}" mode="widthFix" class="bg"></image>
     <image src="../../imgs/music.png" animation="{{musicAnimation}}" mode="widthFix" class="music {{musicPlay ? 'rotate' : ''}}" bindtap="_musicPlayChange"></image>
 
@@ -9,13 +9,44 @@
     </view>
     <!--自定义 /-->
 
-    <view class="index-btns weui-flex" hidden="{{scopeUserInfo}}">
-        <view class="weui-flex__item"><navigator class="btn" url="../playDice/playDice">博状元</navigator></view>
-        <view class="weui-flex__item"><navigator class="btn" url="../rule/rule">游戏规则</navigator></view>
-        <view class="weui-flex__item"><navigator class="btn" url="../rank/rank">排行榜</navigator></view>
-    </view>
-    <view class="index-btns weui-flex"  hidden="{{!scopeUserInfo}}">
-        <view class="weui-flex__item" style="padding: 0 100rpx"><button class="btn" open-type="getUserInfo" bindgetuserinfo="_updateInfo">授权登录</button></view>
+    <view style="background:{{backgroundColor}}">
+        <view class="index-btns weui-flex" hidden="{{scopeUserInfo}}">
+            <view class="weui-flex__item"><navigator class="btn" url="../playDice/playDice">博状元</navigator></view>
+            <view class="weui-flex__item"><navigator class="btn" url="../rule/rule">游戏规则</navigator></view>
+            <view class="weui-flex__item"><navigator class="btn" url="../rank/rank">排行榜</navigator></view>
+        </view>
+        <view class="index-btns weui-flex"  hidden="{{!scopeUserInfo}}">
+            <view class="weui-flex__item" style="padding: 0 100rpx"><button class="btn" open-type="getUserInfo" bindgetuserinfo="_updateInfo">授权登录</button></view>
+        </view>
+
+        <view class="ad-box">
+            <view class="ad-tt">从点击下方logo可增加次数哦</view>
+
+            <view class="ad-list">
+                <block wx:for="{{businessList}}" wx:key="{{index}}">
+                    <view class="ad-list-item" wx:if="{{item.ad_type == 1}}">
+                        <navigator target="miniProgram" app-id="{{item.appid}}" data-id="{{item.id}}" bindsuccess="_adClick">
+                            <image src="{{item.ad ? item.ad : item.logo}}"  mode="aspectFit"/>
+                        </navigator>
+                    </view>
+                    <view class="ad-list-item" wx:if="{{item.ad_type == 2}}">
+                        <navigator url="../webView/webView?url={{item.url}}&id={{item.id}}">
+                            <image src="{{item.ad ? item.ad : item.logo}}"  mode="aspectFit"/>
+                        </navigator>
+                    </view>
+                </block>
+            </view>
+        </view>
+
+        <image src="../../imgs/img1.png"  mode="widthFix" style="width: 100%;"/>
+
+        <view class="cprt">
+            <view>技术支持：尚仁网络</view>
+            <view class="weui-flex">
+                <view class="weui-flex__item">电话：0595-22590889</view>
+                <view>地址：泉州市丰泽区万达中心A座4002</view>
+            </view>
+        </view>
     </view>
 
     <view class="mask" hidden="{{isBindMobile}}">

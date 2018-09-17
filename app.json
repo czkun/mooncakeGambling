@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/rule/rule",
     "pages/rank/rank",
-    "pages/playDice/playDice"
+    "pages/playDice/playDice",
+    "pages/webView/webView"
   ],
   "window": {
     "backgroundTextStyle": "light",
