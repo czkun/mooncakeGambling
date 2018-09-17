@@ -47,7 +47,7 @@ Page({
   },
 
   _swiperChange(e){
-    let len = this.data.logoList.length
+    let len = this.data.businessList.length
     let index = (e.detail.current+1)%len
     this.setData({
       swiperIndex: index
