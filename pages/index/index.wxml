@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container" wx:if="{{bgImg}}">
     <image src="{{bgImg}}" mode="widthFix" class="bg"></image>
-    <image src="../../imgs/music.png" animation="{{musicAnimation}}" mode="widthFix" class="music {{musicPlay ? 'rotate' : ''}}" bindtap="_musicPlayChange"></image>
+    <image src="../../imgs/music.png" mode="widthFix" class="music {{musicPlay ? 'rotate' : ''}}" bindtap="_musicPlayChange"></image>
 
     <!--自定义-->
     <view class="index-bowl">
@@ -56,6 +56,16 @@
                 <view class="weui-flex"><input type="text" data-name="mobile" bindinput="_mobileInput" placeholder="请输入您的手机号码" class="weui-flex__item"/></view>
                 <view class="weui-flex"><input type="text" data-name="code" bindinput="_input" placeholder="请输入验证码" class="weui-flex__item"/><text bindtap="_getCode" class="{{!codeState ? 'gray':''}}">{{codeText}}</text></view>
                 <button  class="bindMobile-box-form-btn" bindtap="_bindMobile">绑定手机号</button>
+            </view>
+        </view>
+    </view>
+
+    <view class="mask" hidden="{{!notice}}">
+        <view class="notice-box">
+            <view class="notice-box-tt">非常重要的通知</view>
+            <view class="notice-box-ct">
+                  <text>{{notice}}</text>
+                 <button  class="notice-box-btn" bindtap="_noticeClose">知道了，我看了三遍</button>
             </view>
         </view>
     </view>

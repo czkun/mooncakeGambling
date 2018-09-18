@@ -18,12 +18,9 @@ Page({
     code: null,
     shareCode: null,
 
-    /* 控制 */
-
     //音乐播放
     musicPlay: true,
     backgroundMusic: null,
-    musicAnimation: null,
 
     // 背景图片
     bgImg: null,
@@ -31,6 +28,8 @@ Page({
     businessList: [],
     // 首页背景色
     backgroundColor: '#B11E23',
+    // 公告
+    notice:'',
 
     // 授权获取信息
     scopeUserInfo: false,
@@ -101,20 +100,16 @@ Page({
       console.log(res.data)
       app.globalData.file = res.data
       wx.hideLoading()
-
       this.setData({
         bgImg: app.globalData.file.index_img,
         businessList: app.globalData.file.business_list,
         backgroundColor: app.globalData.file.background_color,
+        notice: app.globalData.file.notice,
       })
       this._initMusic();
     })
   },
 
-  _view: function(str){
-
-    return str2;
-  },
 
   // 初始化音乐
   _initMusic: function(){
@@ -269,6 +264,12 @@ Page({
     let id = user.getDataSet(e,'id')
     user.adClick(id,(res) => {
       console.log(res)
+    })
+  },
+
+  _noticeClose() {
+    this.setData({
+      notice: ''
     })
   }
 })

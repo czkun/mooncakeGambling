@@ -30,13 +30,24 @@
   right: 90rpx;
   margin-top: -216rpx;
 }
+.notice-box{
+  margin-top: -50%;
+}
+
 .bindMobile-box-tt,.notice-box-tt{
-  height: 65rpx;
-  line-height: 65rpx;
+  height: 70rpx;
+  line-height: 70rpx;
   background-color: #ffb504;
   color: #fff;
+  font-size: 30rpx;
+  padding: 0 40rpx;
+}
+.notice-box-ct{
+  padding: 30rpx;
   font-size: 28rpx;
-  padding: 0 16rpx;
+}
+.notice-box-ct text{
+  width: 100%;
 }
 .bindMobile-box-form{
   padding: 47rpx 54rpx 48rpx;

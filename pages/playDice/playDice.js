@@ -67,7 +67,14 @@ Page({
     app.globalData.backgroundAudioManager = wx.getBackgroundAudioManager()
     this.setData({
       bgImg: app.globalData.file.base_img,
-      musicPlay: wx.getStorageSync('musicPlay')
+      musicPlay: wx.getStorageSync('musicPlay'),
+      disabled: false
+    })
+  },
+
+  onUnload: function() {
+    this.setData({
+      disabled: true
     })
   },
 
